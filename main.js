@@ -49,7 +49,7 @@ async function showForecast(url) {
                     <li>Bewölku8ngsgrad (%): ${details.cloud_area_fraction}</li>
                     <li>Relative Feuchtigkeit (%): ${details.relative_humidity}</li>
                     <li>Windrichtung (°): ${details.wind_from_direction}</li>
-                    <li>Windgeschwindigkeit (km/h): ${Math.round(details.wind_speed)}</li>
+                    <li>Windgeschwindigkeit (km/h): ${Math.round(details.wind_speed*3.6)}</li>
 
                 </ul>
                 `;
