@@ -47,14 +47,14 @@ async function showForecast(url) {
                     <li>Luftdruck Meereshöhe (hPa): ${details.air_pressure_at_sea_level}</li>
                     <li>Lufttemperatur (°C): ${details.air_temperature}</li>
                     <li>Bewölku8ngsgrad (%): ${details.cloud_area_fraction}</li>
-                    <li>Niederschlag (mm): ${details.precipitation_amount}</li>
                     <li>Relative Feuchtigkeit (%): ${details.relative_humidity}</li>
                     <li>Windrichtung (°): ${details.wind_from_direction}</li>
-                    <li>Windgeschwindigkeit (km/h): ${details.wind_speed}</li>
+                    <li>Windgeschwindigkeit (km/h): ${Math.round(details.wind_speed)}</li>
 
-                </ul>`
+                </ul>
+                `;
             L.popup(latlng, {
-                content: '<p>Hello World!<br /> This is a nice Popup. </p>'
+                content: content
             }).openOn(themaLayer.forecast);
 
         }
