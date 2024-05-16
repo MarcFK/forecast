@@ -120,5 +120,9 @@ async function loadWind(url) {
         (<a href = "${url}" target = "met.no">Stand ${forecastDate.toLocaleString()}</a>)
     `;
 
+    // document.querySelector("#map").innerHTML = "heute keine Karte";
+
+
+
 }
 loadWind("https://geographie.uibk.ac.at/data/ecmwf/data/wind-10u-10v-europe.json");
