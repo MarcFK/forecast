@@ -98,7 +98,7 @@ map.fire("click", {
 async function loadWind(url) {
     const response = await fetch(url);
     const jsondata = await response.json();
-    console.log(jsondata);
+    // console.log(jsondata);
     L.velocityLayer({
         data: jsondata,
         lineWidth: 2,
@@ -114,7 +114,11 @@ async function loadWind(url) {
     // Vorhersagezeitpunkt ermitteln
     let forecastDate = new Date(jsondata[0].header.refTime);
     forecastDate.setHours(forecastDate.getHours() + jsondata[0].header.forecastTime);
-    console.log(forecastDate);
+    // console.log(forecastDate);
+
+    document.querySelector("#forecast-date").innerHTML = `
+        (<a href = "${url}" target = "met.no">Stand ${forecastDate.toLocaleString()}</a>)
+    `;
 
 }
 loadWind("https://geographie.uibk.ac.at/data/ecmwf/data/wind-10u-10v-europe.json");
