@@ -57,6 +57,7 @@ async function showForecast(url) {
                 </ul>
                 `;
 
+            // Wettericons für die nächsten 24 Stunden
             for (let i = 0; i <= 24; i += 3) {
                 let symbol = feature.properties.timeseries[i].data.next_1_hours.summary.symbol_code;
                 let time = new Date(feature.properties.timeseries[i].time);
@@ -64,7 +65,7 @@ async function showForecast(url) {
                 console.log(i, symbol);
             }
 
-            // Link zum Datendownload
+            // Link zum Datendownload -> += an bestehende Variable anhängen
             content += `
                 <p><a href = "${url}" target = "met.no">Daten downloaden</a></p>
                 `;
