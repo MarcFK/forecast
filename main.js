@@ -13,7 +13,7 @@ let map = L.map("map", {
 
 // thematische Layer
 let themaLayer = {
-    forecast: L.featureGroup().addTo(map)
+    forecast: L.featureGroup().addTo(map),
     wind: L.featureGroup().addTo(map)
 }
 
@@ -99,5 +99,16 @@ async function loadWind(url) {
     const response = await fetch(url);
     const jsondata = await response.json();
     console.log(jsondata);
+    L.velocityLayer({
+        data: jsondata,
+        lineWidth: 2,
+        displayOptions: {
+            directionsString: "Windrichtung",
+            speedString: "Windgeschwindigkeit",
+            speedUnit: "k/h",
+            position: "bottomright",
+            velocityType:""
+        }
+    }).addTo(themaLayer.wind);
 }
-loadWind("https://geographie.uibk.ac.at/data/ecmwf/data/wind-10u-10v-europe.json")
+loadWind("https://geographie.uibk.ac.at/data/ecmwf/data/wind-10u-10v-europe.json");
