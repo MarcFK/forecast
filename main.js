@@ -39,6 +39,21 @@ async function showForecast(url) {
     console.log(jsondata);
     L.geoJson(jsondata, {
         pointToLayer: function(feature, latlng) {
+            let content = `
+                <ul>
+
+                    <li>Luftdruck Meereshöhe (hPa): air_pressure_at_sea_level</li>
+                    <li>Lufttemperatur (°C): air_temperature</li>
+                    <li>cloud_area_fraction</li>
+                    <li>Niederschlag (mm): precipitation_amount</li>
+                    <li>Relative Feuchtigkeit (%): relative_humidity</li>
+                    <li>Windrichtung (°): wind_from_direction</li>
+                    <li>Windgeschwindigkeit (m/s): wind_speed</li>
+
+                </ul>`
+            L.popup(latlng, {
+                content: '<p>Hello World!<br /> This is a nice Popup. </p>'
+            }).openOn(themaLayer.forecast);
 
         }
     }).addTo(themaLayer.forecast);
